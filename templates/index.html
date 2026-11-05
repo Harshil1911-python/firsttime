@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Board · CF Learn{% endblock %}
+{% block body %}
+<h1>Photo notes</h1>
+<p class="sub">Data in SQLite (local) or D1 (Cloudflare). Photos on disk or R2.</p>
+{% if not items %}
+  <div class="empty">No items yet. <a href="{{ url_for('add') }}">Add one</a>.</div>
+{% else %}
+  <div class="grid">
+  {% for it in items %}
+    <a class="card" href="{{ url_for('detail', item_id=it.id) }}">
+      {% if it.photo_key %}
+        <img src="{{ url_for('files', key=it.photo_key) }}" alt="">
+      {% else %}
+        <div class="ph">No photo</div>
+      {% endif %}
+      <div class="card-body">
+        <strong>{{ it.title }}</strong>
+        <span>{{ (it.body or '')[:80] }}</span>
+      </div>
+    </a>
+  {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}

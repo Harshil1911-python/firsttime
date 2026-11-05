@@ -1,0 +1,14 @@
+name = "cf-flask-learn"
+main = "worker_entry.py"
+compatibility_date = "2026-11-05"
+compatibility_flags = ["python_workers"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cf-flask-learn-db"
+database_id = "REPLACE_AFTER_CREATE"
+preview_database_id = "REPLACE_AFTER_CREATE"
+
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "cf-flask-learn-uploads"

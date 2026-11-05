@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Add · CF Learn{% endblock %}
+{% block body %}
+<h1>Add note</h1>
+<form method="post" enctype="multipart/form-data" class="form">
+  <label>Title *<input name="title" required maxlength="120" placeholder="Sunset listing"></label>
+  <label>Notes<textarea name="body" rows="4" placeholder="Optional text…"></textarea></label>
+  <label>Photo<input type="file" name="photo" accept="image/*"></label>
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ item.title }} · CF Learn{% endblock %}
+{% block body %}
+<article class="detail">
+  <h1>{{ item.title }}</h1>
+  <p class="meta">#{{ item.id }} · {{ item.created_at }}</p>
+  {% if item.photo_key %}
+    <img class="hero" src="{{ url_for('files', key=item.photo_key) }}" alt="">
+  {% endif %}
+  <p class="body">{{ item.body or '—' }}</p>
+  <form method="post" action="{{ url_for('delete', item_id=item.id) }}" onsubmit="return confirm('Delete?');">
+    <button type="submit" class="danger">Delete</button>
+  </form>
+  <p><a href="{{ url_for('index') }}">← Back</a></p>
+</article>
+{% endblock %}
